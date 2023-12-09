@@ -1,0 +1,32 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Daily Exchange Rates</h1>
+    @if (Model.ShowRequestId)
+    {
+        <p>
+            <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        </p>
+    }
+    @if (Model.lst!=null)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">Currency Name</div>
+                <div class="col-sm">Currency Rate</div>
+                <div class="col-sm">Rate Date</div>
+            </div>
+            @foreach (var curr in Model.lst){
+                <div class="row">
+                    <div class="col-sm">@curr.CurrencyName</div>
+                    <div class="col-sm">@curr.CurrencyRate TL</div>
+                    <div class="col-sm">@curr.RateDate</div>
+                </div>
+            }
+        </div>
+    }
+</div>
